@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
 import Wrapper from "../../components/Wrapper";
@@ -24,12 +24,15 @@ class Articles extends Component {
     event.preventDefault();
     if (this.state.topic) {
       API.searchArticles({
-        topic: this.state.topic,
-        startYear: this.state.startYear,
-        endYear: this.state.endYear
+        topic: this.state.topic
+        // startYear: this.state.startYear,
+        // endYear: this.state.endYear
       })
-        .then(res => this.setState({ articles: res.data }))
-        .catch(err => console.log(err));
+      .then(res => {
+        console.log(res.data); 
+        this.setState({ articles: res.data })
+      })
+      .catch(err => console.log(err));
     }
   };
 
@@ -67,9 +70,7 @@ class Articles extends Component {
 	        {this.state.articles.length ? (
 	        	<List>
 	            	{this.state.articles.map(article => (
-	                	<ListItem key={article._id}>
-	                    	{article}
-	                  </ListItem>
+	                	<ListItem key={article.headline.main} headline={article.headline.main} />  
 	                ))}
 	            </List>
 	        ) : (
