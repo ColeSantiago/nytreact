@@ -73,6 +73,7 @@ class Articles extends Component {
 	                	<ListItem 
 	                		key={article.headline.main} 
 	                		headline={article.headline.main} 
+	                		date={article.pub_date}
 	                		snippet={article.snippet}
 	                		link={article.web_url}
 	                	/>  
