@@ -10,10 +10,8 @@ router
   .delete(articlesController.remove);
 
 router.get("/search", (req, res) => {
-	console.log(req.query.q);
 	let apiKey = "89044b6859ce47ef848bcbb0adc487e8"
-	let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${req.query.q}`;
-	console.log(url);
+	let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${req.query.q}&?begin_date=${req.query.begin_date}&?end_date=${req.query.end_date}`;
   axios.get(url)
     .then(function(results) {
     	res.json(results.data.response.docs)

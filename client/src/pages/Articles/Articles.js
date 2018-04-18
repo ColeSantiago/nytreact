@@ -9,8 +9,8 @@ class Articles extends Component {
   state = {
     articles: [],
     topic: "",
-    startYear: "",
-    endYear: ""
+    begin_date: "",
+    end_date: ""
   };
 
   handleInputChange = event => {
@@ -24,9 +24,9 @@ class Articles extends Component {
     event.preventDefault();
     if (this.state.topic) {
       API.searchArticles({
-        topic: this.state.topic
-        // startYear: this.state.startYear,
-        // endYear: this.state.endYear
+        topic: this.state.topic,
+        begin_date: this.state.begin_date,
+        end_date: this.state.end_date
       })
       .then(res => {
         console.log(res.data); 
@@ -48,16 +48,16 @@ class Articles extends Component {
 	                placeholder="topic (required)"
 	              />
 	              <Input
-	                value={this.state.startYear}
+	                value={this.state.begin_date}
 	                onChange={this.handleInputChange}
-	                name="startYear"
-	                placeholder="Start Year"
+	                name="begin_date"
+	                placeholder="Start Year (Optional)"
 	              />
 	              <Input
-	                value={this.state.endYear}
+	                value={this.state.end_date}
 	                onChange={this.handleInputChange}
-	                name="endYear"
-	                placeholder="endYear (Optional)"
+	                name="end_date"
+	                placeholder="End Year (Optional)"
 	              />
 	              <FormBtn
 	                disabled={!(this.state.topic)}
@@ -70,7 +70,12 @@ class Articles extends Component {
 	        {this.state.articles.length ? (
 	        	<List>
 	            	{this.state.articles.map(article => (
-	                	<ListItem key={article.headline.main} headline={article.headline.main} />  
+	                	<ListItem 
+	                		key={article.headline.main} 
+	                		headline={article.headline.main} 
+	                		snippet={article.snippet}
+	                		link={article.web_url}
+	                	/>  
 	                ))}
 	            </List>
 	        ) : (
