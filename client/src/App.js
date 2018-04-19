@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Articles from "./pages/Articles";
-// import Saved from "./pages/Saved";
+import Saved from "./pages/Saved";
 import Nav from "./components/Nav";
 
 const App = () => (
@@ -9,8 +9,8 @@ const App = () => (
     <div>
       <Nav />
       <Switch>
-        <Route path="/" component={Articles} />
-        
+        <Route exact path="/" component={Articles} />
+        <Route exact path="/saved/articles" component={Saved} />
       </Switch>
     </div>
   </Router>
@@ -18,6 +18,6 @@ const App = () => (
 
 export default App;
 
-// <Route exact path="/saved/articles" component={Saved} />
+
 
 
