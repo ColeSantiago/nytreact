@@ -5,16 +5,25 @@ import { Input, FormBtn } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
 import Wrapper from "../../components/Wrapper";
 import SaveBtn from "../../components/SaveBtn";
+import Checkmark from "../../checkmark.png";
+import "./Articles.css";
 
 class Articles extends Component {
   state = {
     articles: [],
     topic: "",
     begin_date: "",
-    end_date: ""
+    end_date: "",
+    buttonText: "Save",
+    ifSaved: ""
   };
 
   saveArticle = (id) => {
+  	this.setState({ifSaved: "Saved!"})
+  	setTimeout(function(){
+    	this.setState({ifSaved: ""})
+    }.bind(this),4000);
+  	
     const findArticle = this.state.articles.find((article) => article._id === id);
 
       API.saveArticle({ 
@@ -76,7 +85,8 @@ class Articles extends Component {
 	                Search
 	              </FormBtn>
 	        </form>
-	        <h1>Results</h1>   
+	        <h1>Results</h1> 
+	        {this.state.ifSaved}  
 	        {this.state.articles.length ? (
 	        	<List>
 	            	{this.state.articles.map(article => (
@@ -88,8 +98,15 @@ class Articles extends Component {
 	                		snippet={article.snippet}
 	                		link={article.web_url}
 	                	>
-		                <SaveBtn onClick={() => this.saveArticle(article._id)} />
+		                <SaveBtn 
+		                	key={article._id}
+	                		_id={article._id}
+	                		onClick={() => this.saveArticle(article._id)}
+	                	>
+		                	{this.state.buttonText}
+		                </SaveBtn>
 	             		</ListItem>
+
 	                ))}
 
 	            </List>

@@ -3,7 +3,7 @@ import "./SaveBtn.css";
 
 const SaveBtn = props => (
   <button className="save-btn" {...props}>
-    Save
+   {props.children}
   </button>
 );
 
