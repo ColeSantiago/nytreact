@@ -19,7 +19,7 @@ export default {
   deleteArticle: function(id) {
     return axios.delete("/api/articles/" + id);
   },
-  saveArticle: function(bookData) {
-    return axios.post("/api/articles/save");
+  saveArticle: function(articleData) {
+    return axios.post("/api/articles", articleData);
   }
 };

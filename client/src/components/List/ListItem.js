@@ -5,5 +5,6 @@ export const ListItem = props => (
     <a href={props.link} target="_blank">{props.headline}</a>
     <div className="date">{props.date}</div>
     <div className="snippet">{props.snippet}</div> 
+    {props.children}
   </li>
 );
