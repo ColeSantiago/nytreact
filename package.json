@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "root": "dist/",
-  "routes": {
-    "/**": "index.html"
-  },
   "scripts": {
     "server": "node server.js",
     "client": "node scripts/start-client.js",
