@@ -1,9 +1,9 @@
 import React from "react";
-import "./DeleteBtn.css";
+import "../List/List.css";
 
 const DeleteBtn = props => (
-  <span className="delete-btn" {...props}>
-    ✗
+  <span className="btn" {...props}>
+    Delete
   </span>
 );
 

@@ -1,0 +1,33 @@
+.form-div {
+
+}
+
+.form-input {
+	padding: 15px;
+	width: 550px;
+	margin: 15px;
+	font-size: 18px;
+	color: #9e3333;
+}
+
+.FormBtn {
+	margin-bottom: 30px;
+	padding: 15px;
+	width: 200px;
+	font-size: 18px;
+	background: #1e1e5f;
+	box-shadow: 
+	0 14px 28px rgba(0,0,0,.25), 
+	0 10px 10px rgba(0,0,0,.22);
+	color: white;
+}
+
+.FormBtn:hover {
+	cursor: pointer;
+	background: white;
+	color: #1e1e5f;
+}
+
+.FormBtn:active {
+	box-shadow: none;
+}

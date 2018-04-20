@@ -8,6 +8,8 @@ import SaveBtn from "../../components/SaveBtn";
 import Checkmark from "../../checkmark.png";
 import "./Articles.css";
 
+console.log(Checkmark);
+
 class Articles extends Component {
   state = {
     articles: [],
@@ -19,12 +21,13 @@ class Articles extends Component {
   };
 
   saveArticle = (id) => {
-  	this.setState({ifSaved: "Saved!"})
+
+    const findArticle = this.state.articles.find((article) => article._id === id);
+
+    this.setState({ifSaved:  `${findArticle.headline.main} Saved!`})
   	setTimeout(function(){
     	this.setState({ifSaved: ""})
-    }.bind(this),4000);
-  	
-    const findArticle = this.state.articles.find((article) => article._id === id);
+    }.bind(this),3000);
 
       API.saveArticle({ 
       		headline: findArticle.headline.main,
@@ -58,25 +61,25 @@ class Articles extends Component {
   render() {
     return (
     	<Wrapper>
-	    	<h1>Search New York Times Articles</h1>
+	    	<h1 className="main-title">Search New York Times Articles</h1>
 	        <form>
 	        	<Input
 	            	value={this.state.topic}
 	                onChange={this.handleInputChange}
 	                name="topic"
-	                placeholder="topic (required)"
+	                placeholder="Topic (required)"
 	              />
 	              <Input
 	                value={this.state.begin_date}
 	                onChange={this.handleInputChange}
 	                name="begin_date"
-	                placeholder="Start Year (Optional)"
+	                placeholder="Start Date YYYYMMDD (Optional)"
 	              />
 	              <Input
 	                value={this.state.end_date}
 	                onChange={this.handleInputChange}
 	                name="end_date"
-	                placeholder="End Year (Optional)"
+	                placeholder="End Date YYYYMMDD (Optional)"
 	              />
 	              <FormBtn
 	                disabled={!(this.state.topic)}
@@ -85,8 +88,7 @@ class Articles extends Component {
 	                Search
 	              </FormBtn>
 	        </form>
-	        <h1>Results</h1> 
-	        {this.state.ifSaved}  
+	        <h1 className="Results">Results</h1> 
 	        {this.state.articles.length ? (
 	        	<List>
 	            	{this.state.articles.map(article => (
@@ -105,13 +107,12 @@ class Articles extends Component {
 	                	>
 		                	{this.state.buttonText}
 		                </SaveBtn>
+		                <div className="ifSaved">{this.state.ifSaved}</div>
 	             		</ListItem>
-
 	                ))}
-
 	            </List>
 	        ) : (
-	        <h3>No Results to Display</h3>
+	        <h3 className="Results">No Results to Display</h3>
 	        )}
       	</Wrapper> 
     );

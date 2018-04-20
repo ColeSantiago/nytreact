@@ -1,8 +1,8 @@
 import React from "react";
-import "./SaveBtn.css";
+import "../List/List.css";
 
 const SaveBtn = props => (
-  <button className="save-btn" {...props}>
+  <button className="btn" {...props}>
    {props.children}
   </button>
 );

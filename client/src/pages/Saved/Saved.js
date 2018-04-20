@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
 import Wrapper from "../../components/Wrapper";
 import DeleteBtn from "../../components/DeleteBtn";
+import "./Saved.css"
 
 class Saved extends Component {
   state = {
@@ -31,7 +32,7 @@ class Saved extends Component {
   render() {
     return (
     	<Wrapper>
-	       	<h1>Saved Articles</h1>   
+	       	<h1 className="Saved">Saved Articles</h1>   
 	        {this.state.saved.length ? (
 	        	<List>
 	            	{this.state.saved.map(article => (
@@ -49,7 +50,7 @@ class Saved extends Component {
 
 	            </List>
 	        ) : (
-	        <h3>You havn't saved any articles yet!</h3>
+	        <h3 className="Saved">You haven't saved any articles yet!</h3>
 	        )}
       	</Wrapper> 
     );

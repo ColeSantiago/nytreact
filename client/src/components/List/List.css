@@ -1,0 +1,47 @@
+.list-group-item {
+	margin: 15px;
+	background: #dedede;
+	width: 1110px;
+	padding: 25px;
+	line-height: 20px;
+}
+
+.headline {
+	margin: 9px;
+	font-size: 25px;
+	text-decoration: none;
+	color: #1b3ba0;
+}
+
+.headline:hover {
+	text-decoration: underline;
+
+}
+
+.date {
+	margin: 9px;
+	font-size: 17px;
+}
+
+.snippet {
+	margin: 9px;
+	font-size: 18px;
+}
+
+.btn {
+	padding: 10px;
+	width: 140px;
+	background: #1e1e5f;
+	color: white;
+	font-size: 15px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background: white;
+	color: #1e1e5f;
+}
+
+.btn:active {
+	box-shadow: none;
+}
