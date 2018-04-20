@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../../components/Form";
 import { List, ListItem } from "../../components/List";
 import Wrapper from "../../components/Wrapper";
@@ -8,9 +7,8 @@ import SaveBtn from "../../components/SaveBtn";
 import Checkmark from "../../checkmark.png";
 import "./Articles.css";
 
-console.log(Checkmark);
-
 class Articles extends Component {
+// setting the state for the article and the input boxes
   state = {
     articles: [],
     topic: "",
@@ -20,24 +18,27 @@ class Articles extends Component {
     ifSaved: ""
   };
 
+// function to save the articles
   saveArticle = (id) => {
-
     const findArticle = this.state.articles.find((article) => article._id === id);
 
+    // shows the article that was saved for 3 seconds
     this.setState({ifSaved:  `${findArticle.headline.main} Saved!`})
   	setTimeout(function(){
     	this.setState({ifSaved: ""})
     }.bind(this),3000);
 
-      API.saveArticle({ 
-      		headline: findArticle.headline.main,
-    		link: findArticle.web_url,
-    		date: findArticle.pub_date,
-    		snippet: findArticle.snippet })
+  	// sends the article to save
+    API.saveArticle({ 
+      	headline: findArticle.headline.main,
+    	link: findArticle.web_url,
+    	date: findArticle.pub_date,
+    	snippet: findArticle.snippet })
      	.then(res => console.log(res.data))
-        .catch(err => console.log(err));
+    	.catch(err => console.log(err));
   };
 
+  // handles the form
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -45,6 +46,7 @@ class Articles extends Component {
     });
   };
 
+  // handles the form button, searches for the topic with the search parameters
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.topic) {

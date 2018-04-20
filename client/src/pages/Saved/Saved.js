@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
 import { List, ListItem } from "../../components/List";
 import Wrapper from "../../components/Wrapper";
 import DeleteBtn from "../../components/DeleteBtn";
@@ -11,10 +10,12 @@ class Saved extends Component {
     saved: [],
   };
 
+  // loads all of the articles saved when the page loads
   componentDidMount() {
   	this.loadArticles();
   }
 
+  // function to load the articles
   loadArticles = () => {
   	API.getArticles()
     .then(res =>
@@ -23,6 +24,7 @@ class Saved extends Component {
     .catch(err => console.log(err));
   };
 
+  // function to delete the article
   deleteArticle = id => {
     API.deleteArticle(id)
     .then(res => this.loadArticles())
